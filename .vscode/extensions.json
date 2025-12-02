@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "stylemistake.auto-comment-blocks",
+    "biomejs.biome",
+    "platymuus.dm-langclient",
+    "anturk.dmi-editor",
+    "eamodio.gitlens",
+    "oderwat.indent-rainbow"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+    "name": "dm-invalid-utf8-discovery",
+    "version": "0.1.0",
+    "type":"module",
+    "main": "index.js",
+    "engines": {
+      "node": ">=18.14.0"
+    },
+    "contributors": [
+        "spookerton <spkrtn@pm.me> (https://github.com/spookerton)"
+    ]
+}
