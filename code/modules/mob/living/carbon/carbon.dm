@@ -28,6 +28,7 @@
 	var/datum/reagents/R = get_ingested_reagents()
 	if(istype(R))
 		R.clear_reagents()
+	chem_doses.Cut()
 	set_nutrition(400)
 	set_hydration(400)
 	stop_allergy()
