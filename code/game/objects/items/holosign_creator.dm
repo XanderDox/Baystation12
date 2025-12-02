@@ -70,3 +70,31 @@
 	creation_time = 0 //time to create a holosign in deciseconds.
 	holosign_type = /obj/structure/holosign/constellation
 	holocreator_busy = FALSE //to prevent placing multiple holo barriers at once
+
+/obj/item/holosign_creator/stellascope/use_after(atom/target, mob/living/user, click_parameters)
+	var/turf/T = get_turf(target)
+	if (!T) return FALSE
+	var/obj/structure/holosign/H = locate(holosign_type) in T
+	if (H) return FALSE
+
+	if (!is_blocked_turf(T, TRUE)) //can't put holograms on a tile that has dense stuff
+		if (holocreator_busy)
+			to_chat(user, SPAN_NOTICE("[src] is busy creating a hologram."))
+			return TRUE
+		if (length(signs) < max_signs)
+			playsound(src.loc, 'sound/effects/jingle.ogg', 20, 1)
+			if(creation_time)
+				holocreator_busy = TRUE
+				if(!do_after(user, creation_time, target, DO_BOTH_UNIQUE_ACT))
+					holocreator_busy = FALSE
+					return TRUE
+				holocreator_busy = FALSE
+				if(length(signs) >= max_signs)
+					return TRUE
+				if(is_blocked_turf(T, TRUE)) //don't try to sneak dense stuff on our tile during the wait.
+					return TRUE
+			H = new holosign_type(get_turf(target), src)
+			to_chat(user, SPAN_NOTICE("You create \a [H] with [src]."))
+		else
+			to_chat(user, SPAN_NOTICE("[src] is projecting at max capacity!"))
+		return TRUE

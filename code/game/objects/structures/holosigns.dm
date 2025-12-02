@@ -52,8 +52,9 @@
 	qdel(src)
 
 /obj/structure/holosign/constellation
-	name = "starry projection."
+	name = "starry projection"
 	desc = "A holographic projection of a star system."
 	anchored = TRUE
 	icon = 'icons/obj/weapons/stellascope.dmi' // move these into their own dmi if we ever add more than 1 of these
 	icon_state = "starprojection"
+	layer = ABOVE_HUMAN_LAYER
