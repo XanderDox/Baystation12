@@ -54,3 +54,19 @@
 		for(var/H in signs)
 			qdel(H)
 		to_chat(user, SPAN_NOTICE("You clear all active holograms."))
+
+/obj/item/holosign_creator/stellascope
+	name = "stellascope"
+	desc = "An antique and delicate looking instrument used to study the stars."
+	icon = 'icons/obj/weapons/stellascope.dmi'
+	icon_state = "starscope"
+	force = 0
+	w_class = ITEM_SIZE_SMALL
+	throwforce = 0
+	throw_speed = 3
+	throw_range = 7
+	signs = list()
+	max_signs = 1
+	creation_time = 0 //time to create a holosign in deciseconds.
+	holosign_type = /obj/structure/holosign/constellation
+	holocreator_busy = FALSE //to prevent placing multiple holo barriers at once
